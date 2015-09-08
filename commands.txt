@@ -1,9 +1,8 @@
-# compose-mesos
-A walkthrough of this project is available at: https://spof.io/blog/2015/06/23/mesos-sandbox-using-docker-compose/
-```
+# start up the whole thing
 docker-compose up
+# now browse via http to http://192.168.7.250:8080
 
-marathonctl 
+# launch an application
 marathonctl -h http://192.168.7.250:8080 app create oss-webs_v1.json
+# update the applicaiton in a rolling format
 marathonctl -h http://192.168.7.250:8080 app update oss oss-webs_v2.json
-```

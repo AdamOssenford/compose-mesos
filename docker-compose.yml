@@ -24,7 +24,7 @@ mesos1:
     MESOS_LOG_DIR: /var/log
     MESOS_CLUSTER: localmesos
     MESOS_ZK: zk://zookeeper1:2181/mesos
-    MESOS_HOSTNAME: 192.168.59.103
+    MESOS_HOSTNAME: 192.168.7.250
     MESOS_WORK_DIR: /var/lib/mesos
     MESOS_QUORUM: 1
 
@@ -46,7 +46,7 @@ slave1:
     MESOS_ISOLATOR: "cgroups/cpu,cgroups/mem"
     MESOS_CONTAINERIZERS: "docker,mesos"
     MESOS_EXECUTOR_REGISTRATION_TIMEOUT: "5mins"
-    MESOS_HOSTNAME: 192.168.59.103
+    MESOS_HOSTNAME: 192.168.7.250
     MESOS_PORT: "5051"
     MESOS_LOG_DIR: /var/log
   volumes:
@@ -65,7 +65,7 @@ slave2:
     MESOS_ISOLATOR: "cgroups/cpu,cgroups/mem"
     MESOS_CONTAINERIZERS: "docker,mesos"
     MESOS_EXECUTOR_REGISTRATION_TIMEOUT: "5mins"
-    MESOS_HOSTNAME: 192.168.59.103
+    MESOS_HOSTNAME: 192.168.7.250
     MESOS_PORT: "5052"
     MESOS_LOG_DIR: /var/log
   volumes_from:
@@ -82,7 +82,7 @@ slave3:
     MESOS_ISOLATOR: "cgroups/cpu,cgroups/mem"
     MESOS_CONTAINERIZERS: "docker,mesos"
     MESOS_EXECUTOR_REGISTRATION_TIMEOUT: "5mins"
-    MESOS_HOSTNAME: 192.168.59.103
+    MESOS_HOSTNAME: 192.168.7.250
     MESOS_PORT: "5053"
     MESOS_LOG_DIR: /var/log
   volumes_from:
@@ -115,3 +115,13 @@ chronos:
     - "zk1:zookeeper1"
     - mesos1
   command: "--master zk://zookeeper1:2181/mesos --zk_hosts zk://zookeeper1:2181/mesos"
+
+#balance:
+#  image: adamoss/oss-haproxy:2.0
+#  ports:
+#    - "80:80"
+#    - "70:70"
+#  links:
+#    - "zk1:zookeper1"
+#    - mesos1
+#    - marathon

@@ -1,8 +1,8 @@
 {
-  "id": "microbot",
+  "id": "oss-webs",
   "container": {
     "docker": {
-      "image": "dontrebootme/microbot:v1",
+      "image": "adamoss/oss-webs:1.0",
       "network": "BRIDGE",
       "portMappings": [
         {
